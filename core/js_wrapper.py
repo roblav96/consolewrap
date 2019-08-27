@@ -120,6 +120,9 @@ class JsWrapp(JsSettings):
 		is_coffee = view.match_selector(view.sel()[-1].b, 'source.coffee')
 
 		if is_coffee:
+			consoleStr = '█ ' + consoleStr
+
+		if is_coffee:
 			text = var.replace("'", "\\'")
 		elif back_ticks:
 			text = var.replace("`", "\\`")
