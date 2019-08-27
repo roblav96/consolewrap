@@ -118,7 +118,9 @@ class JsWrapp(JsSettings):
 		consoleFunc = self.getConsoleFunc()
 		separator = ", "
 
-		if back_ticks:
+		if view.match_selector(cursor.begin(), 'source.coffee'):
+			text = var.replace("'", "\\'")
+		elif back_ticks:
 			text = var.replace("`", "\\`")
 		elif single_quotes:
 			text = var.replace("'", "\\'")
@@ -141,7 +143,9 @@ class JsWrapp(JsSettings):
 
 		tmpl = indent_str if insert_before else ("\n" + indent_str)
 
-		if back_ticks:
+		if view.match_selector(cursor.begin(), 'source.coffee'):
+			quotes = "'"
+		elif back_ticks:
 			quotes = "`"
 		elif single_quotes:
 			quotes = "'"
