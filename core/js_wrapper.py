@@ -115,7 +115,7 @@ class JsWrapp(JsSettings):
 		separator = ", "
 
 		if single_quotes:
-			text = var.replace("'", "\\'")
+			text = var.replace("`", "\\`")
 		else:
 			text = var.replace('"', '\\"')
 
@@ -135,7 +135,7 @@ class JsWrapp(JsSettings):
 
 		tmpl = indent_str if insert_before else ("\n" + indent_str)
 
-		quotes = "'" if single_quotes else "\""
+		quotes = "`" if single_quotes else "\""
 		a = ("{4}({0}{1}{0}{2}{3}){5}").format(quotes, t, separator, v, ".".join(consoleFunc), semicolon)
 		a = a.format(title=text, variable=var)
 
