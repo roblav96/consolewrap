@@ -117,8 +117,9 @@ class JsWrapp(JsSettings):
 		insertSemicolon = self.getSemicolonSetting()
 		consoleFunc = self.getConsoleFunc()
 		separator = ", "
+		is_coffee = view.match_selector(view.sel()[-1].b, 'source.coffee')
 
-		if view.match_selector(cursor.begin(), 'source.coffee'):
+		if is_coffee:
 			text = var.replace("'", "\\'")
 		elif back_ticks:
 			text = var.replace("`", "\\`")
@@ -143,7 +144,7 @@ class JsWrapp(JsSettings):
 
 		tmpl = indent_str if insert_before else ("\n" + indent_str)
 
-		if view.match_selector(cursor.begin(), 'source.coffee'):
+		if is_coffee:
 			quotes = "'"
 		elif back_ticks:
 			quotes = "`"
