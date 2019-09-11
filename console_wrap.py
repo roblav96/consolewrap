@@ -15,10 +15,6 @@ except ValueError:
 	from core.php_wrapper import PhpWrapp
 
 
-def plugin_loaded():
-	print('[Console Wrap] ' + '*' * 30 + ' loaded ' + '*' * 30)
-
-
 wrapConnector = {}
 
 wrapConnector['js'] = JsWrapp()
